@@ -6,11 +6,21 @@
 /*   By: rsantos <rsantos@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 19:11:02 by rsantos           #+#    #+#             */
-/*   Updated: 2022/09/22 05:50:14 by rsantos          ###   ########.fr       */
+/*   Updated: 2022/09/27 15:47:41 by rsantos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+int str_crh(char* buffer){
+	
+	int i;
+	i = 0;
+	
+	while(buffer[i] && buffer[i] != '\n')
+		i++;
+	return(i);
+}
 
 char* ft_read(int fd, char* saved, char* buffer){
 	
@@ -18,22 +28,17 @@ char* ft_read(int fd, char* saved, char* buffer){
 	char* temp;
 	
 	flag = 1;
-	while (flag != 0)
-	{
 	
-		
-		
-	}
+		flag = read(fd,	buffer, BUFFER_SIZE);
+		    
 	
 }
 
 
-char* get_next_line(int fd)
-{	
+char* get_next_line(int fd){	
 		char* buffer;
 		static char* saved;
 		char* line;
-		
 
 		if(fd < 0 || BUFFER_SIZE <= 0)
 				return (NULL);
@@ -45,8 +50,11 @@ char* get_next_line(int fd)
 }
 
 int	main(void){
+	int	fd;
 
-	FILE * fpointer;
-	fpointer = fopen("testGNL", "r");
-	
+	fd = open ("testGNL.txt", O_RDONLY);
+	if (fd == -1)
+		printf("error");
+	close (fd);
+	return (0);
 }

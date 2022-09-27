@@ -6,14 +6,13 @@
 /*   By: rsantos <rsantos@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 04:57:23 by rsantos           #+#    #+#             */
-/*   Updated: 2022/09/22 05:14:38 by rsantos          ###   ########.fr       */
+/*   Updated: 2022/09/27 03:46:09 by rsantos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_substr(char const *s, size_t start, size_t len)
-{
+char	*ft_substr(char const *s, size_t start, size_t len){
 	size_t i;
 	char *str;
 	
@@ -35,8 +34,7 @@ char	*ft_substr(char const *s, size_t start, size_t len)
 	return(str);
 }
 
-size_t	ft_strlen(char *str)
-{
+size_t	ft_strlen(char *str){
 	size_t i;
 	
 	i = -1;
@@ -44,8 +42,7 @@ size_t	ft_strlen(char *str)
 	return(i);
 }
 
-char    *ft_strdup(const char *str)
-{
+char    *ft_strdup(const char *str){
     int  i;
     int  len;
     char *dup;
@@ -63,8 +60,7 @@ char    *ft_strdup(const char *str)
     return (dup);
 }
 
-char	*ft_strjoin(const char *str1, const char *str2)
-{
+char	*ft_strjoin(const char *str1, const char *str2){
 	int i;
 	int j;
 	int size1;
