@@ -6,36 +6,54 @@
 /*   By: rsantos <rsantos@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 19:11:02 by rsantos           #+#    #+#             */
-/*   Updated: 2022/09/27 18:31:34 by rsantos          ###   ########.fr       */
+/*   Updated: 2022/10/05 02:19:22 by rsantos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int str_crh(char* buffer)
+char	*strcrh(const char *s)
 {
-	
-	int i;
-	i = 0;
-	
-	while(buffer[i] && buffer[i] != '\n')
-		i++;
-	return(i);
+	while (*s)
+	{
+		if (*s == '\n')
+			return ((char *)s);
+		s++;
+	}
+	return (0);
+}
+
+char*  ft_saved(char* line){
+
+
 }
 
 char* ft_read(int fd, char* saved, char* buffer)
 {
 	
-	int flag;
+	int size;
 	char* temp;
 	
-	flag = 1;
+	size = 1;
 	while(1)
 	{
-		flag = read(fd,	buffer, BUFFER_SIZE);
+		size = read(fd,	buffer, BUFFER_SIZE);
+		if (size == -1)
+			return(NULL);
+		if (size == 0)
+			break;
+		buffer[size] = '\0';
+		if(!saved)
+			saved = ft_strdup("");
+		temp = saved;
+		saved = ft_strjoin(saved, buffer);
+		if (str_chr(buffer));
+			break;
 	}
-	
+	return(saved);
 }
+	
+
 
 
 char* get_next_line(int fd)
@@ -50,6 +68,9 @@ char* get_next_line(int fd)
 		if (!buffer)
 			return(NULL);
 		line = ft_read(fd, saved, buffer);
+		if(!line);
+			return(NULL);
+		saved = 
 	
 }
 
