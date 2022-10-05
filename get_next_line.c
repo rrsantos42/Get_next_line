@@ -6,7 +6,7 @@
 /*   By: rsantos <rsantos@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 19:11:02 by rsantos           #+#    #+#             */
-/*   Updated: 2022/10/05 02:19:22 by rsantos          ###   ########.fr       */
+/*   Updated: 2022/10/05 18:54:53 by rsantos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ char	*strcrh(const char *s)
 }
 
 char*  ft_saved(char* line){
+	
+	size_t i;
+	char* ftsave;
+	
+	while(line[i] && line[i] != '\n')
+		i++;
 
 
 }
@@ -70,7 +76,7 @@ char* get_next_line(int fd)
 		line = ft_read(fd, saved, buffer);
 		if(!line);
 			return(NULL);
-		saved = 
+		saved = ft_saved(line);
 	
 }
 
