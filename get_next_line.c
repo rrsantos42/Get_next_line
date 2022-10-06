@@ -6,18 +6,18 @@
 /*   By: rsantos <rsantos@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 19:11:02 by rsantos           #+#    #+#             */
-/*   Updated: 2022/10/05 18:54:53 by rsantos          ###   ########.fr       */
+/*   Updated: 2022/10/06 03:51:36 by rsantos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*strcrh(const char *s)
+char	*strcrh(char *s)
 {
 	while (*s)
 	{
 		if (*s == '\n')
-			return ((char *)s);
+			return (1);
 		s++;
 	}
 	return (0);
@@ -28,9 +28,16 @@ char*  ft_saved(char* line){
 	size_t i;
 	char* ftsave;
 	
-	while(line[i] && line[i] != '\n')
-		i++;
-
+	if (!line[i] || !line[1])
+		return (NULL);
+	ftsave = ft_substr(line, i + 1, ft_strlen(line) - i);
+	if (!*ftsave)
+	{
+		free(ftsave);
+		ftsave = NULL;
+	}
+	line[i + 1] = '\0';
+	return (ftsave);
 
 }
 
@@ -77,15 +84,25 @@ char* get_next_line(int fd)
 		if(!line);
 			return(NULL);
 		saved = ft_saved(line);
-	
+	return (line);	
 }
 
 int	main(void){
 	int	fd;
+	int i;
+	int	j;
+	char	*line = 0;
+	char	*lineadress[66];
 
 	fd = open ("testGNL.txt", O_RDONLY);
-	if (fd == -1)
-		printf("error");
-	close (fd);
+	while (( get_next_line(fd)))
+	{
+		printf("|%s\n", line);
+		lineadress[j - 1] = line;
+		j++;
+	}
+	printf("|%s\n", line);
+	free(line);
+	close(fd);
 	return (0);
 }
