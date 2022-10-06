@@ -6,7 +6,7 @@
 /*   By: rsantos <rsantos@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 19:11:02 by rsantos           #+#    #+#             */
-/*   Updated: 2022/10/06 03:51:36 by rsantos          ###   ########.fr       */
+/*   Updated: 2022/10/06 04:13:59 by rsantos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ char*  ft_saved(char* line){
 	size_t i;
 	char* ftsave;
 	
+	while (line[i] && line[i] != '\n')
+		i++;
+	
 	if (!line[i] || !line[1])
 		return (NULL);
 	ftsave = ft_substr(line, i + 1, ft_strlen(line) - i);
 	if (!*ftsave)
-	{
 		free(ftsave);
-		ftsave = NULL;
-	}
 	line[i + 1] = '\0';
 	return (ftsave);
 
@@ -58,7 +58,6 @@ char* ft_read(int fd, char* saved, char* buffer)
 		buffer[size] = '\0';
 		if(!saved)
 			saved = ft_strdup("");
-		temp = saved;
 		saved = ft_strjoin(saved, buffer);
 		if (str_chr(buffer));
 			break;
@@ -91,15 +90,12 @@ int	main(void){
 	int	fd;
 	int i;
 	int	j;
-	char	*line = 0;
-	char	*lineadress[66];
-
-	fd = open ("testGNL.txt", O_RDONLY);
+	char	*line;
+	fd = open("testGNL.txt", O_RDONLY);
 	while (( get_next_line(fd)))
 	{
+		line = get_next_line(fd);
 		printf("|%s\n", line);
-		lineadress[j - 1] = line;
-		j++;
 	}
 	printf("|%s\n", line);
 	free(line);
