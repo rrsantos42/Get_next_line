@@ -6,7 +6,7 @@
 /*   By: rsantos <rsantos@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 04:57:23 by rsantos           #+#    #+#             */
-/*   Updated: 2022/09/27 18:26:51 by rsantos          ###   ########.fr       */
+/*   Updated: 2022/10/06 21:37:14 by rsantos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_substr(char const *s, size_t start, size_t len)
 	i = 0;
 	if (len < ft_strlen((char *)s))
 		str = malloc((len + 1) * sizeof(char));
-	if(len > ft_strlen((char *)s))
+	if(len >= ft_strlen((char *)s))
 		str = malloc((ft_strlen((char *)s) + 1) * sizeof(char));
 	if (!str)
 		return(NULL);
@@ -44,7 +44,7 @@ size_t	ft_strlen(char *str)
 	return(i);
 }
 
-char    *ft_strdup(const char *str)
+char    *ft_strdup(char *str)
 {
     int  i;
     int  len;
@@ -63,7 +63,7 @@ char    *ft_strdup(const char *str)
     return (dup);
 }
 
-char	*ft_strjoin(const char *str1, const char *str2)
+char* ft_strjoin(char* str1, char* str2)
 {
 	int i;
 	int j;
